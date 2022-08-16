@@ -2,6 +2,8 @@ import streamlit as st
 from google.oauth2 import service_account
 from gsheetsdb import connect
 
+st.write("The display will be improved in the near futre with options")
+
 # Create a connection object.
 credentials = service_account.Credentials.from_service_account_info(
     st.secrets["gcp_service_account"],
@@ -26,4 +28,6 @@ rows = run_query(f'SELECT * FROM "{sheet_url}"')
 for row in rows:
     st.write(f"{row.शीर्षक} is of type :{row.प्रकार}:")
 
-st.write("Hello world!")
+st.dataframe(rows)
+
+
