@@ -1,6 +1,7 @@
 import streamlit as st
 from google.oauth2 import service_account
 from gsheetsdb import connect
+import pandas as pd
 
 st.write("The display will be improved in the near futre with options")
 
@@ -28,5 +29,8 @@ rows = run_query(f'SELECT * FROM "{sheet_url}"')
 # for row in rows:
 #     st.write(f"{row.शीर्षक} is of type :{row.प्रकार}:")
 
-st.dataframe(rows)[["शीर्षक","लेखक","प्रकाशन साल","प्रकार","पात्रसंख्या (पु)","पात्रसंख्या (स्त्री)","अंक","कालावधी (मिनिटे)","टिप्पणी"]]
+#st.dataframe(rows)[["शीर्षक","लेखक","प्रकाशन साल","प्रकार","पात्रसंख्या (पु)","पात्रसंख्या (स्त्री)","अंक","कालावधी (मिनिटे)","टिप्पणी"]]
 #df[["शीर्षक"]]
+
+df = pd.DataFrame(rows)
+df[["शीर्षक","लेखक","प्रकाशन साल","प्रकार","पात्रसंख्या (पु)","पात्रसंख्या (स्त्री)","अंक","कालावधी (मिनिटे)","टिप्पणी"]]
