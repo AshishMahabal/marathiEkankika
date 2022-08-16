@@ -28,6 +28,6 @@ rows = run_query(f'SELECT * FROM "{sheet_url}"')
 for row in rows:
     st.write(f"{row.शीर्षक} is of type :{row.प्रकार}:")
 
-st.dataframe(rows)
-
+df = st.dataframe(rows)
+df[["शीर्षक","लेखक","प्रकाशन साल","प्रकार","पात्रसंख्या (पु)","पात्रसंख्या (स्त्री)","अंक	कालावधी (मिनिटे)","टिप्पणी"]]
 
