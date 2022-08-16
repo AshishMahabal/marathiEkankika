@@ -24,10 +24,10 @@ def run_query(query):
 sheet_url = st.secrets["private_gsheets_url"]
 rows = run_query(f'SELECT * FROM "{sheet_url}"')
 
-# Print results.
-for row in rows:
-    st.write(f"{row.शीर्षक} is of type :{row.प्रकार}:")
+# # Print results.
+# for row in rows:
+#     st.write(f"{row.शीर्षक} is of type :{row.प्रकार}:")
 
 df = st.dataframe(rows)
-df[["शीर्षक","लेखक","प्रकाशन साल","प्रकार","पात्रसंख्या (पु)","पात्रसंख्या (स्त्री)","अंक	कालावधी (मिनिटे)","टिप्पणी"]]
+df[["शीर्षक","लेखक","प्रकाशन साल","प्रकार","पात्रसंख्या (पु)","पात्रसंख्या (स्त्री)","अंक","कालावधी (मिनिटे)","टिप्पणी"]]
 
