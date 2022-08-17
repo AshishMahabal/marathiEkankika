@@ -3,7 +3,7 @@ from google.oauth2 import service_account
 from gsheetsdb import connect
 import pandas as pd
 
-st.write("The display will be improved in the near futre with options")
+
 
 # Create a connection object.
 credentials = service_account.Credentials.from_service_account_info(
@@ -25,13 +25,6 @@ def run_query(query):
 sheet_url = st.secrets["private_gsheets_url"]
 rows = run_query(f'SELECT * FROM "{sheet_url}"')
 
-# # Print results.
-# for row in rows:
-#     st.write(f"{row.शीर्षक} is of type :{row.प्रकार}:")
-
-#st.dataframe(rows)[["शीर्षक","लेखक","प्रकाशन साल","प्रकार","पात्रसंख्या (पु)","पात्रसंख्या (स्त्री)","अंक","कालावधी (मिनिटे)","टिप्पणी"]]
-#df[["शीर्षक"]]
-
 df = pd.DataFrame(rows)
 df.अंक = df.अंक.astype('int64')
 df.प्रकाशन_साल = df.प्रकाशन_साल.astype('int64')
@@ -39,7 +32,16 @@ df.पात्र_पु = df.पात्र_पु.astype('int64')
 df.पात्र_स्त्री = df.पात्र_स्त्री.astype('int64')
 df.कालावधी_मिनिटे = df.कालावधी_मिनिटे.astype('int64')
 
+st.title("मराठी एकांकिका")
+st.sidebar.title("निवडी")
+
+toDisplay = st.sidebar.radio(
+	"What would you like to see?",
+	["All articles", "By author", "By type"],
+	index=0
+)
+
+st.write("The display will be improved in the near futre with options")
+
 
 df[["शीर्षक","लेखक","प्रकार","अंक","प्रकाशन_साल","पात्र_पु","पात्र_स्त्री","कालावधी_मिनिटे"]]
-#df.columns
-#df[["शीर्षक","लेखक","प्रकाशन साल","प्रकार","पात्रसंख्या (पु)","पात्रसंख्या (स्त्री)","अंक","कालावधी (मिनिटे)","टिप्पणी"]]
