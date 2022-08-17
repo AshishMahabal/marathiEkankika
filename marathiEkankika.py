@@ -42,8 +42,8 @@ toDisplay = st.sidebar.radio(
 st.write("The display will be improved in the near futre with options")
 
 if toDisplay == "By author":
-    	author = st.sidebar.selectbox(
-		'Select by Author',
+    author = st.sidebar.selectbox(
+	    'Select by Author',
 		df['लेखक'].sort_values().unique())
 	numart = len(df[df['लेखक']==author])
 	'You selected Author:',author,' (',numart,' contributions)'
