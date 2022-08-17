@@ -3,8 +3,6 @@ from google.oauth2 import service_account
 from gsheetsdb import connect
 import pandas as pd
 
-
-
 # Create a connection object.
 credentials = service_account.Credentials.from_service_account_info(
     st.secrets["gcp_service_account"],
@@ -43,5 +41,24 @@ toDisplay = st.sidebar.radio(
 
 st.write("The display will be improved in the near futre with options")
 
-
-df[["शीर्षक","लेखक","प्रकार","अंक","प्रकाशन_साल","पात्र_पु","पात्र_स्त्री","कालावधी_मिनिटे"]]
+if toDisplay == "By author":
+    	author = st.sidebar.selectbox(
+		'Select by Author',
+		df['लेखक'].sort_values().unique())
+	numart = len(df[df['लेखक']==author])
+	'You selected Author:',author,' (',numart,' contributions)'
+	df[df['लेखक']==author][["शीर्षक","प्रकार","अंक","प्रकाशन_साल","पात्र_पु","पात्र_स्त्री","कालावधी_मिनिटे"]]	
+elif toDisplay == "By type":
+    	type = st.sidebar.selectbox(
+		'Select by Type',
+		df['प्रकार'].sort_values().unique())
+	numsub = len(df[df['प्रकार']==type])
+	'You selected type:', type, '(',\
+	'Host: ', df[df['प्रकार']==type]['Host'].iloc[0],\
+	'Epoch: ', df[df['प्रकार']==type]['Month'].iloc[0],\
+	'/',df[df['प्रकार']==type]['Year'].iloc[0],\
+	')',\
+	numsub,' submission(s)'
+	df[df['प्रकार']==type][["शीर्षक","लेखक","अंक","प्रकाशन_साल","पात्र_पु","पात्र_स्त्री","कालावधी_मिनिटे"]]
+else:
+    df[["शीर्षक","लेखक","प्रकार","अंक","प्रकाशन_साल","पात्र_पु","पात्र_स्त्री","कालावधी_मिनिटे"]]
