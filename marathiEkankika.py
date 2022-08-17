@@ -52,13 +52,13 @@ elif toDisplay == "By type":
     	type = st.sidebar.selectbox(
 		'Select by Type',
 		df['प्रकार'].sort_values().unique())
-	numsub = len(df[df['प्रकार']==type])
-	'You selected type:', type, '(',\
-	'Host: ', df[df['प्रकार']==type]['Host'].iloc[0],\
-	'Epoch: ', df[df['प्रकार']==type]['Month'].iloc[0],\
-	'/',df[df['प्रकार']==type]['Year'].iloc[0],\
-	')',\
-	numsub,' submission(s)'
-	df[df['प्रकार']==type][["शीर्षक","लेखक","अंक","प्रकाशन_साल","पात्र_पु","पात्र_स्त्री","कालावधी_मिनिटे"]]
+    numsub = len(df[df['प्रकार']==type])
+    'You selected type:', type, '(',\
+    'Host: ', df[df['प्रकार']==type]['Host'].iloc[0],\
+    'Epoch: ', df[df['प्रकार']==type]['Month'].iloc[0],\
+    '/',df[df['प्रकार']==type]['Year'].iloc[0],\
+    ')',\
+    numsub,' submission(s)'
+    df[df['प्रकार']==type][["शीर्षक","लेखक","अंक","प्रकाशन_साल","पात्र_पु","पात्र_स्त्री","कालावधी_मिनिटे"]]
 else:
     df[["शीर्षक","लेखक","प्रकार","अंक","प्रकाशन_साल","पात्र_पु","पात्र_स्त्री","कालावधी_मिनिटे"]]
