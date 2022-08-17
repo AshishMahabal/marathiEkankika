@@ -43,11 +43,11 @@ st.write("The display will be improved in the near futre with options")
 
 if toDisplay == "By author":
     author = st.sidebar.selectbox(
-	    'Select by Author',
-		df['लेखक'].sort_values().unique())
-	numart = len(df[df['लेखक']==author])
-	'You selected Author:',author,' (',numart,' contributions)'
-	df[df['लेखक']==author][["शीर्षक","प्रकार","अंक","प्रकाशन_साल","पात्र_पु","पात्र_स्त्री","कालावधी_मिनिटे"]]	
+        'Select by Author',
+        df['लेखक'].sort_values().unique())
+    numart = len(df[df['लेखक']==author])
+    'You selected Author:',author,' (',numart,' contributions)'
+    df[df['लेखक']==author][["शीर्षक","प्रकार","अंक","प्रकाशन_साल","पात्र_पु","पात्र_स्त्री","कालावधी_मिनिटे"]]	
 elif toDisplay == "By type":
     	type = st.sidebar.selectbox(
 		'Select by Type',
